@@ -25,8 +25,6 @@ function NavBar() {
 }
 
 function MovieList({movies}) {
-  //console.log(movies)
-  //console.log(props.movies)
   return (
     <>
       <h2>Movie Ratings</h2>
@@ -35,10 +33,10 @@ function MovieList({movies}) {
   );
 }
 
-function Movie(props) {
+function Movie({movie}) {
   return (
     <>
-      <p>{props.name} ({props.year}): {props.rating}</p>
+      <p>{movie.name} ({movie.year}): {movie.rating} / 5</p>
     </>
   );
   

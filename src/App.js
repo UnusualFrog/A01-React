@@ -1,25 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import movieData from './movies.json'
+import { useState } from 'react';
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar></NavBar>
+    </>
   );
 }
+
+function NavBar() {
+  let [loginStatus, setLoginStatus] = useState("Login")
+  return (
+    <>
+      <h1>Assignment 1</h1>
+      <button onClick={(evt) => {
+        loginStatus === "Login" ? setLoginStatus("Logout") : setLoginStatus("Login")
+      }}>{loginStatus}</button>
+      <MovieList movies={movieData.movies}></MovieList>
+    </>
+  );
+}
+
+function MovieList({movies}) {
+  //console.log(movies)
+  //console.log(props.movies)
+  return (
+    <>
+      <h2>Movie Ratings</h2>
+      {movies.map( movie => <Movie movie={movie}></Movie>)}
+    </>
+  );
+}
+
+function Movie(props) {
+  return (
+    <>
+      <p>{props.name} ({props.year}): {props.rating}</p>
+    </>
+  );
+  
+}
+
+
 
 export default App;
